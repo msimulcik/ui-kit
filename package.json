@@ -1,17 +1,13 @@
 {
-  "name": "ui-kit",
-  "version": "1.0.0",
-  "description": "ui-kit React component",
+  "name": "ceai-ui-kit",
+  "version": "0.0.1",
+  "description": "ceai-ui-kit library",
   "main": "lib/index.js",
   "module": "es/index.js",
-  "files": [
-    "css",
-    "es",
-    "lib",
-    "umd"
-  ],
+  "files": ["css", "es", "lib", "umd"],
   "scripts": {
-    "build": "nwb build-react-component --no-demo && build-storybook -c .storybook -o demo/dist",
+    "build":
+      "nwb build-react-component --no-demo && build-storybook -c .storybook -o demo/dist",
     "clean": "nwb clean-module && nwb clean-demo",
     "start": "start-storybook -p 9001 -c .storybook",
     "test": "nwb test-react",
@@ -40,13 +36,12 @@
     "react-dom": "^16.3.2",
     "story2sketch": "msimulcik/story2sketch.git"
   },
-  "author": "",
-  "homepage": "",
+  "author": "Miroslav Simulcik",
+  "homepage": "https://msimulcik.github.io/ui-kit",
   "license": "MIT",
   "repository": {
+    "type": "git",
     "url": "https://github.com/msimulcik/ui-kit"
   },
-  "keywords": [
-    "react-component"
-  ]
+  "keywords": ["react-component"]
 }
