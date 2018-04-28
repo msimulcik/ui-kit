@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { withTheme } from "react-fela";
 import { Box, Text } from "base-styling-components";
 import Button from "../../src/Button";
-import { buildLightName } from './ColorStory';
+import { buildLightName } from "./ColorStory";
 
 const stories = storiesOf("Buttons", module);
 
@@ -16,9 +16,16 @@ const ButtonsList = withTheme(({ theme }) => {
   return primaryColors.map(name => (
     <Box mr="50px">
       <Text color="#7B7B7B">{name}</Text>
-      <Button color={colors[name]} data-sketch-symbol={name}>Button</Button>
+      <Button color={colors[name]} data-sketch-symbol={name}>
+        Button
+      </Button>
       <Box mt="large">
-        <Button color={colors[name]} hoverColor={colors[buildLightName(name)]} data-sketch-symbol={`${name}-transparent`} outline>
+        <Button
+          color={colors[name]}
+          hoverColor={colors[buildLightName(name)]}
+          data-sketch-symbol={`${name}-transparent`}
+          outline
+        >
           Button
         </Button>
       </Box>
@@ -29,6 +36,14 @@ const ButtonsList = withTheme(({ theme }) => {
 stories.add("buttons", () => (
   <Box m="large" display="flex">
     <ButtonsList />
+  </Box>
+));
+
+stories.add("SuperButton", () => (
+  <Box m="large" display="flex">
+    <Button height={130} color={"red"} data-sketch-symbol={name}>
+      Button
+    </Button>
   </Box>
 ));
 
