@@ -4,6 +4,7 @@ import { Provider as FelaProvider, ThemeProvider } from "react-fela";
 import prefixAll from "inline-style-prefixer/static";
 import fallbackValue from "fela-plugin-fallback-value";
 import { defaultTheme } from "base-styling-components";
+import customTheme from "./theme";
 
 /**
  * Create styles renderer.
@@ -131,7 +132,12 @@ function makeRenderer(): Function {
 
 const renderer = makeRenderer();
 
-const Provider = ({ theme, children }) => {
+const Provider = ({ children }) => {
+  const theme = {
+    ...defaultTheme,
+    ...customTheme
+  };
+  
   return (
     <FelaProvider renderer={renderer}>
       <ThemeProvider theme={{ ...defaultTheme, ...theme }}>
