@@ -31,6 +31,7 @@
   "devDependencies": {
     "@storybook/react": "^3.4.3",
     "babel-core": "^6.26.3",
+    "cz-conventional-changelog": "^2.1.0",
     "gh-pages": "^1.1.0",
     "nwb": "0.21.x",
     "react": "^16.3.2",
@@ -45,5 +46,10 @@
     "type": "git",
     "url": "https://github.com/msimulcik/ui-kit"
   },
-  "keywords": ["react-component"]
+  "keywords": ["react-component"],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
