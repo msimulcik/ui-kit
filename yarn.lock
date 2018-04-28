@@ -9234,8 +9234,8 @@ statuses@~1.4.0:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.4.0.tgz#bb73d446da2796106efcc1b601a253d6c46bd087"
 
 story2sketch@msimulcik/story2sketch.git:
-  version "0.3.0"
-  resolved "https://codeload.github.com/msimulcik/story2sketch/tar.gz/3a6b5636de74fe1676eb0b6bb7d50dd88b87cfde"
+  version "0.4.0"
+  resolved "https://codeload.github.com/msimulcik/story2sketch/tar.gz/1e296eb4df95d293db45bdf04ba8a5f2e042ad95"
   dependencies:
     "@brainly/html-sketchapp" "^3.0.2"
     chalk "^2.3.0"
