@@ -17,9 +17,13 @@ after_success:
       yarn run semantic-release &&
       yarn run deploy-gh-pages &&
       yarn run story2sketch &&
+      echo 'Installing gdrive' &&
       curl -fLo gdrive "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download" &&
+      echo 'Setting gdrive' &&
       chmod +x ./gdrive &&
+      echo 'Uploading page sketch' &&
       ./gdrive upload --refresh-token "1/RoeksSjh0CWf8_OAagRJbLjGtA1X-ZrTPoZk0O6jiwE" --parent "0BxK46Mn5WhT2V21tS1I2NWVFOTQ" ./sketch/page.asketch.json &&
+      echo 'Uploading document sketch' &&
       ./gdrive upload --refresh-token "1/RoeksSjh0CWf8_OAagRJbLjGtA1X-ZrTPoZk0O6jiwE" --parent "0BxK46Mn5WhT2V21tS1I2NWVFOTQ" ./sketch/document.asketch.json
     else
       echo -e \
