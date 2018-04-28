@@ -3,5 +3,6 @@
 /es
 /lib
 /node_modules
+/sketch
 /umd
 npm-debug.log*

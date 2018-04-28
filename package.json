@@ -11,26 +11,41 @@
     "umd"
   ],
   "scripts": {
-    "build": "nwb build-react-component",
+    "build": "nwb build-react-component --no-demo && build-storybook -c .storybook -o demo/dist",
     "clean": "nwb clean-module && nwb clean-demo",
-    "start": "nwb serve-react-demo",
+    "start": "start-storybook -p 9001 -c .storybook",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server"
+    "test:watch": "nwb test-react --server",
+    "story2sketch": "story2sketch --input demo/dist/iframe.html",
+    "story2sketch:dev": "story2sketch --url http://localhost:9001/iframe.html",
+    "deploy-gh-pages": "node scripts/deploy-gh-pages.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "base-styling-components": "^2.0.3",
+    "fela": "^6.1.7",
+    "fela-plugin-fallback-value": "^5.0.17",
+    "inline-style-prefixer": "^4.0.0",
+    "react-fela": "^7.2.0"
+  },
   "peerDependencies": {
     "react": "16.x"
   },
   "devDependencies": {
+    "@storybook/react": "^3.4.3",
+    "babel-core": "^6.26.3",
+    "gh-pages": "^1.1.0",
     "nwb": "0.21.x",
     "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "react-dom": "^16.3.2",
+    "story2sketch": "msimulcik/story2sketch.git"
   },
   "author": "",
   "homepage": "",
   "license": "MIT",
-  "repository": "",
+  "repository": {
+    "url": "https://github.com/msimulcik/ui-kit"
+  },
   "keywords": [
     "react-component"
   ]
