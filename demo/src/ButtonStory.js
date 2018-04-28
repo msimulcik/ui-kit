@@ -12,7 +12,7 @@ stories.add("simple", () => (
 
 stories.add("simple2", () => (
   <Box backgroundColor="red" display="inline-block" p="small">
-    <Text color="blue">Hello Button</Text>
+    <Text color="blue">Hellooo Button</Text>
   </Box>
 ));
 
