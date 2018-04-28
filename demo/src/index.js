@@ -1,4 +1,6 @@
 import React from "react";
-import { addDecorator } from "@storybook/react";
 
+import "./ColorStory";
+import "./TypographyStory";
 import "./ButtonStory";
+import "./PanelStory";

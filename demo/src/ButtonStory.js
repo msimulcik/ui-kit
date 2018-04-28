@@ -1,46 +1,34 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
+import { withTheme } from "react-fela";
 import { Box, Text } from "base-styling-components";
+import Button from "../../src/Button";
+import { buildLightName } from './ColorStory';
 
-const stories = storiesOf("Button", module);
+const stories = storiesOf("Buttons", module);
 
-stories.add("simple", () => (
-  <Box backgroundColor="green" display="inline-block" p="small">
-    <Text color="red">Hello Button</Text>
-  </Box>
-));
+const ButtonsList = withTheme(({ theme }) => {
+  const { colors } = theme;
+  const primaryColors = Object.keys(theme.colors).filter(
+    color => !color.includes("light")
+  );
 
-stories.add("simple2", () => (
-  <Box backgroundColor="red" display="inline-block" p="small">
-    <Text color="blue">Hello Button</Text>
-  </Box>
-));
+  return primaryColors.map(name => (
+    <Box mr="50px">
+      <Text color="#7B7B7B">{name}</Text>
+      <Button color={colors[name]} data-sketch-symbol={name}>Button</Button>
+      <Box mt="large">
+        <Button color={colors[name]} hoverColor={colors[buildLightName(name)]} data-sketch-symbol={`${name}-transparent`} outline>
+          Button
+        </Button>
+      </Box>
+    </Box>
+  ));
+});
 
-stories.add("greenColor", () => (
-  <Box data-sketch-ignore-symbol>
-    <Box
-      backgroundColor="#2ECC71"
-      data-sketch-color="#2ECC71"
-      width={100}
-      height={100}
-    />
-    <Box
-      backgroundColor="#F8E71C"
-      data-sketch-color="#F8E71C"
-      width={100}
-      height={100}
-    />
-  </Box>
-));
-
-stories.add("heading5", () => (
-  <Box data-sketch-ignore-symbol>
-    <Text size={5} data-sketch-text="Heading 5">
-      Some heading 5 text
-    </Text>
-    <Text size={2} data-sketch-text="Heading 2">
-      Some heading 2 text
-    </Text>
+stories.add("buttons", () => (
+  <Box m="large" display="flex">
+    <ButtonsList />
   </Box>
 ));
 
