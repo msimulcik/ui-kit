@@ -21,10 +21,12 @@ after_success:
       curl -fLo gdrive "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download" &&
       echo 'Setting gdrive' &&
       chmod +x ./gdrive &&
+      ls -la ./sketch &&
       echo 'Uploading page sketch' &&
-      ./gdrive upload --refresh-token "1/RoeksSjh0CWf8_OAagRJbLjGtA1X-ZrTPoZk0O6jiwE" --parent "0BxK46Mn5WhT2V21tS1I2NWVFOTQ" ./sketch/page.asketch.json &&
+      ./gdrive upload --refresh-token $GDRIVE_REFRESH_TOKEN --parent $GDRIVE_DIR ./sketch/page.asketch.json &&
       echo 'Uploading document sketch' &&
-      ./gdrive upload --refresh-token "1/RoeksSjh0CWf8_OAagRJbLjGtA1X-ZrTPoZk0O6jiwE" --parent "0BxK46Mn5WhT2V21tS1I2NWVFOTQ" ./sketch/document.asketch.json
+      ./gdrive upload --refresh-token $GDRIVE_REFRESH_TOKEN --parent $GDRIVE_DIR ./sketch/document.asketch.json &&
+      echo 'Done uploading'
     else
       echo -e \
         "\n"\
