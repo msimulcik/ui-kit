@@ -1,6 +1,6 @@
 {
   "name": "ceai-ui-kit",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "ceai-ui-kit library",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -15,7 +15,8 @@
     "test:watch": "nwb test-react --server",
     "story2sketch": "story2sketch --input demo/dist/iframe.html",
     "story2sketch:dev": "story2sketch --url http://localhost:9001/iframe.html",
-    "deploy-gh-pages": "node scripts/deploy-gh-pages.js"
+    "deploy-gh-pages": "node scripts/deploy-gh-pages.js",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "base-styling-components": "^2.0.3",
@@ -34,6 +35,7 @@
     "nwb": "0.21.x",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "semantic-release": "^15.1.7",
     "story2sketch": "msimulcik/story2sketch.git"
   },
   "author": "Miroslav Simulcik",

@@ -10,6 +10,16 @@ before_install:
 after_success:
   - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - if [ ${TRAVIS_SECURE_ENV_VARS} = "true" ]; then
+      yarn run semantic-release;
+      yarn run deploy-gh-pages;
+    else
+      echo -e \
+        "\n"\
+        "Skipping deployment step because secure environment variables are unavailable.\n"\
+        "This is most likely because this build is happening in the context of a fork, which is untrusted code.\n"\
+        "\n";
+    fi
 
 branches:
   only:

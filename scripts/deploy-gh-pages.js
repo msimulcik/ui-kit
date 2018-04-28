@@ -3,13 +3,13 @@ var ghpages = require("gh-pages");
 var basePath = path.join(__dirname, "../demo/dist");
 var repoUrl = require("../package.json").repository.url;
 
-var GH_PAGES_TOKEN = process.env.GH_PAGES_TOKEN;
-var tokenRegex = GH_PAGES_TOKEN ? new RegExp(GH_PAGES_TOKEN, "g") : null;
+var GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+var tokenRegex = GITHUB_TOKEN ? new RegExp(GITHUB_TOKEN, "g") : null;
 
 var log = function(message) {
   if (tokenRegex) {
     // Hide token from build logs
-    message = message.replace(tokenRegex, "[GH_PAGES_TOKEN]");
+    message = message.replace(tokenRegex, "[GITHUB_TOKEN]");
   }
 
   console.log(message);
@@ -17,8 +17,8 @@ var log = function(message) {
 
 var makeConfig = function() {
   return {
-    repo: GH_PAGES_TOKEN
-      ? repoUrl.replace("https://", "https://" + GH_PAGES_TOKEN + "@")
+    repo: GITHUB_TOKEN
+      ? repoUrl.replace("https://", "https://" + GITHUB_TOKEN + "@")
       : repoUrl,
     logger: log
   };
