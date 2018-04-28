@@ -22,9 +22,9 @@ after_success:
       echo 'Setting gdrive' &&
       chmod +x ./gdrive &&
       echo 'Uploading page sketch' &&
-      ./gdrive upload --refresh-token "1/RoeksSjh0CWf8_OAagRJbLjGtA1X-ZrTPoZk0O6jiwE" --parent "0BxK46Mn5WhT2V21tS1I2NWVFOTQ" ./sketch/page.asketch.json &&
+      ./gdrive upload --refresh-token $GDRIVE_REFRESH_TOKEN --parent $GDRIVE_DIR ./sketch/page.asketch.json &&
       echo 'Uploading document sketch' &&
-      ./gdrive upload --refresh-token "1/RoeksSjh0CWf8_OAagRJbLjGtA1X-ZrTPoZk0O6jiwE" --parent "0BxK46Mn5WhT2V21tS1I2NWVFOTQ" ./sketch/document.asketch.json
+      ./gdrive upload --refresh-token $GDRIVE_REFRESH_TOKEN --parent $GDRIVE_DIR ./sketch/document.asketch.json
     else
       echo -e \
         "\n"\
