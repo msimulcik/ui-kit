@@ -13,10 +13,14 @@ after_success:
   - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
   - if [ ${TRAVIS_SECURE_ENV_VARS} = "true" ]; then
-      yarn run build;
-      yarn run semantic-release;
-      yarn run deploy-gh-pages;
-      yarn run story2sketch;
+      yarn run build &&
+      yarn run semantic-release &&
+      yarn run deploy-gh-pages &&
+      yarn run story2sketch &&
+      curl -fLo gdrive "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download" &&
+      chmod +x ./gdrive &&
+      ./gdrive upload --refresh-token "1/RoeksSjh0CWf8_OAagRJbLjGtA1X-ZrTPoZk0O6jiwE" --parent "0BxK46Mn5WhT2V21tS1I2NWVFOTQ" ./sketch/page.asketch.json &&
+      ./gdrive upload --refresh-token "1/RoeksSjh0CWf8_OAagRJbLjGtA1X-ZrTPoZk0O6jiwE" --parent "0BxK46Mn5WhT2V21tS1I2NWVFOTQ" ./sketch/document.asketch.json
     else
       echo -e \
         "\n"\
