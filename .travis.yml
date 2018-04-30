@@ -1,0 +1,40 @@
+sudo: required
+addons:
+ chrome: stable
+
+language: node_js
+node_js:
+  - 8
+
+before_install:
+  - yarn add -D codecov.io coveralls
+
+after_success:
+  - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  - if [ ${TRAVIS_SECURE_ENV_VARS} = "true" ]; then
+      yarn run build &&
+      yarn run semantic-release &&
+      yarn run deploy-gh-pages &&
+      yarn run story2sketch &&
+      echo 'Installing gdrive' &&
+      curl -fLo gdrive "https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download" &&
+      echo 'Setting gdrive' &&
+      chmod +x ./gdrive &&
+      ls -la ./sketch &&
+      echo 'Updating page sketch' &&
+      ./gdrive update --refresh-token $GDRIVE_REFRESH_TOKEN "1lVgLRrOnXjfrnh2D-IH82ejzSb3oTEKW" ./sketch/page.asketch.json &&
+      echo 'Updating document sketch' &&
+      ./gdrive update --refresh-token $GDRIVE_REFRESH_TOKEN "1kehFejus5VQnEUkoBTxKSh6dPt-ZFY5X" ./sketch/document.asketch.json &&
+      echo 'Done updating'
+    else
+      echo -e \
+        "\n"\
+        "Skipping deployment step because secure environment variables are unavailable.\n"\
+        "This is most likely because this build is happening in the context of a fork, which is untrusted code.\n"\
+        "\n";
+    fi
+
+branches:
+  only:
+    - master

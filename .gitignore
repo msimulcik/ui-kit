@@ -1,0 +1,9 @@
+/coverage
+/demo/dist
+/es
+/lib
+/node_modules
+/sketch
+/umd
+yarn-error.log
+npm-debug.log*
